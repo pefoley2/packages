@@ -2,7 +2,7 @@
 
 import json
 from random import choice
-from config import APPKEY, MAXPRICE
+from config import APPKEY
 from urllib.request import urlopen, Request
 
 
@@ -24,10 +24,12 @@ def get_categories():
 def get_item(category):
     url = 'http://svcs.ebay.com/services/search/FindingService/v1'
     url += '?itemFilter(0).name=FreeShippingOnly&itemFilter(0).value=true'
-    url += '&itemFilter(1).name=MaxPrice&itemFilter(1).value=' + MAXPRICE
+    url += '&itemFilter(1).name=MaxPrice&itemFilter(1).value=1'
     url += '&itemFilter(1).paramName=Currency&itemFilter(1).paramValue=USD'
-    url += '&itemFilter(2).name=ListingType'
-    url += '&itemFilter(2).value(0)=StoreInventory&itemFilter(2).value(1)=FixedPrice&itemFilter(2).value(2)=AuctionWithBIN'
+    url += '&itemFilter(2).name=MaxPrice&itemFilter(2).value=1'
+    url += '&itemFilter(2).paramName=Currency&itemFilter(2).paramValue=USD'
+    url += '&itemFilter(3).name=ListingType'
+    url += '&itemFilter(3).value(0)=StoreInventory&itemFilter(3).value(1)=FixedPrice&itemFilter(3).value(2)=AuctionWithBIN'
     url += '&categoryId=' + category
     req = Request(url)
     req.add_header('X-EBAY-SOA-RESPONSE-DATA-FORMAT', 'json')
