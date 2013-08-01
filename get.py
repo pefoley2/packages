@@ -40,7 +40,7 @@ def get_item(category):
         return None
     else:
         item = choice(item['item'])
-    return item['title'][0]+' -- http://ebay.com/itm/'+item['itemId'][0]
+    return item['title'][0]+' -- http://www.ebay.com/itm/'+item['itemId'][0]
 
 
 def main():
